@@ -1,10 +1,11 @@
 <?php
 
 # Credentials
-define("USERNAME", "9349f4ef03");
-define("PASSWORD", "Y6giX3");
-define("SITEID", "a1456bfc");
-define("STOREID", "52235119");
+define("USERNAME", "52ca4c1a8b");
+define("PASSWORD", "dnJ8cbLeJtoV");
+define("SITEID", "db6c93a5");
+define("STOREID", "67036782");
+define("ECWID_AUTH_TOKEN", "secret_tHwZUAWXk5QRGtuybbJsBZhBGWpMdRSk");
 define("LOBSTER_TOKEN_CLIENT_ID", "capsicum-userprovisioning-prod");
 define("LOBSTER_TOKEN_CLIENT_SECRET", "c1cbe61c-7bd4-d3e2-a027-85fdff9449e0");
 

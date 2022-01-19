@@ -27,16 +27,16 @@ if ($event_type = OrderEventType::STORE_ORDER_UPDATED && $status === OrderStatus
 
     Logger::log("Got Order");
 
-    if ($order === null || isset($order->billingPerson)) {
+    if ($order === null || !isset($order->billingPerson) || !empty($order->email) || count($order->items) === 0 || !empty(order->errorMessage)) {
         Logger::error("Order not found from Duda Orders". json_encode($order));
         send_error_response(404);
     };
         
     $customer = [
-        'email' => "lannon@epicdev.co.za",
+        'email' => $order->email,
         'firstName' => $order->billingPerson->firstName,
         'lastName' => $order->billingPerson->lastName,
-        'businessUnitId' => 142
+        'businessUnitId' => (int)$order->items[0].sku
     ];
 
     Logger::log("Init Customer". json_encode($customer));

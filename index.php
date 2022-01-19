@@ -12,18 +12,18 @@ if ($event_type = OrderEventType::STORE_ORDER_UPDATED && $status === OrderStatus
 
     Logger::log("Getting Duda Store Token");
 
-    $token_object = fetch(DUDA_STORE_TOKEN_URL, [], '', false, true, ["username" => USERNAME, "password" => PASSWORD], ContentType::JSON);
+    //$token_object = fetch(DUDA_STORE_TOKEN_URL, [], '', false, true, ["username" => USERNAME, "password" => PASSWORD], ContentType::JSON);
 
-    if ($token_object === null || empty($token_object->oauth_token_v3)) {
-        Logger::error("Could not get Duda Store token ". json_encode($token_object));
-        send_error_response();
-    };
+    //if ($token_object === null || empty($token_object->oauth_token_v3)) {
+        //Logger::error("Could not get Duda Store token ". json_encode($token_object));
+        //send_error_response();
+    //};
 
-    $store_auth_token = $token_object->oauth_token_v3;
+    //$store_auth_token = $token_object->oauth_token_v3;
 
-    Logger::log("Got Duda Store Token". $store_auth_token);
+    //Logger::log("Got Duda Store Token". $store_auth_token);
 
-    $order = fetch(ECWID_URL.STOREID."/orders/{$orderId}?token={$store_auth_token}", [], '', false);
+    $order = fetch(ECWID_URL.STOREID."/orders/{$orderId}?token=".ECWID_AUTH_TOKEN, [], '', false);
 
     Logger::log("Got Order");
 

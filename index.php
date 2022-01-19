@@ -27,7 +27,7 @@ if ($event_type = OrderEventType::STORE_ORDER_UPDATED && $status === OrderStatus
 
     Logger::log("Got Order");
 
-    if ($order === null || !isset($order->billingPerson) || !empty($order->email) || count($order->items) === 0 || !empty(order->errorMessage)) {
+    if ($order === null || !isset($order->billingPerson) || !empty($order->email) || count($order->items) === 0 || !empty($order->errorMessage)) {
         Logger::error("Order not found from Duda Orders". json_encode($order));
         send_error_response(404);
     };

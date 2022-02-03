@@ -33,11 +33,20 @@ try {
             Logger::error("Order not found from Duda Orders". json_encode($order));
             send_error_response(404);
         };
+
+        $firstname = $order->billingPerson->name;
+        $lastname = $order->billingPerson->name;
+        $fullname_split = explode(' ', $order->billingPerson->name);
+
+        if (count($fullname_split) > 1) {
+            $firstname = $fullname_split[0];
+            $lastname = $fullname_split[count($fullname_split) - 1];
+        }
         
         $customer = [
             'email' => $order->email,
-            'firstName' => $order->billingPerson->name,
-            'lastName' => $order->billingPerson->name,
+            'firstName' => $firstname,
+            'lastName' => $lastname,
             'businessUnitId' => (int)$order->items[0]->sku
         ];
 
